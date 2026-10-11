@@ -11,10 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
     <link rel="icon" href="/restore-performance/favicon.svg" type="image/svg+xml" />
     <noscript><style>.loader{display:none}html.is-loading,html.is-loading body{overflow:visible}</style></noscript>
-    <script type="module" crossorigin src="/restore-performance/assets/index-Dyygo8_Q.js"></script>
-    <link rel="stylesheet" crossorigin href="/restore-performance/assets/index-DE_ogNau.css">
+    <script>
+      // failsafe: if the bundle never starts (offline, blocked, error), do not leave the page black and locked
+      setTimeout(function () {
+        if (!document.documentElement.classList.contains("is-loading")) return;
+        document.documentElement.classList.remove("is-loading");
+        var l = document.querySelector(".loader"); if (l) l.style.display = "none";
+      }, 8000);
+    </script>
+    <script type="module" crossorigin src="/restore-performance/assets/index-C5y2Hd_3.js"></script>
+    <link rel="stylesheet" crossorigin href="/restore-performance/assets/index-TjeTyiT1.css">
   </head>
   <body>
+    <a class="skip" href="#top">Saltar al contenido</a>
     <svg class="svg-defs" aria-hidden="true" focusable="false">
       <defs>
         <symbol id="i-arrow" viewBox="0 0 16 10"><path d="M0 5h14M10 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.1"/></symbol>
@@ -178,21 +187,21 @@
               <p class="eyebrow" data-reveal>04 — Servicios</p>
               <h2 class="h2" id="servicios-t" data-lines>Tres pilares.<br />Un enfoque integral.</h2>
               <p class="body" data-reveal>Trabajamos en las áreas clave que influyen en tu salud, energía y desempeño, conectando cada pieza para lograr resultados reales y sostenibles.</p>
-              <a class="link" href="#cta" data-reveal>Explora nuestros servicios <svg class="ico-arrow"><use href="#i-arrow"/></svg></a>
+              <a class="link" href="#agenda" aria-haspopup="dialog" data-reveal>Explora nuestros servicios <svg class="ico-arrow"><use href="#i-arrow"/></svg></a>
             </div>
             <div class="cards">
-              <a class="card" href="#cta">
-                <div class="card-img"><div class="card-media ph-card-1" role="img" aria-label="Retrato de perfil al atardecer"></div><span class="card-go"><svg class="ico-arrow"><use href="#i-arrow"/></svg></span></div>
+              <a class="card" href="#agenda" aria-haspopup="dialog">
+                <div class="card-img"><div class="card-media ph-card-1" aria-hidden="true"></div><span class="card-go"><svg class="ico-arrow"><use href="#i-arrow"/></svg></span></div>
                 <h3>Optimización<br />de salud</h3>
                 <p>Evalúa, previene y mejora tu funcionamiento integral.</p>
               </a>
-              <a class="card" href="#cta">
-                <div class="card-img"><div class="card-media ph-card-2" role="img" aria-label="Espalda atlética en penumbra"></div><span class="card-go"><svg class="ico-arrow"><use href="#i-arrow"/></svg></span></div>
+              <a class="card" href="#agenda" aria-haspopup="dialog">
+                <div class="card-img"><div class="card-media ph-card-2" aria-hidden="true"></div><span class="card-go"><svg class="ico-arrow"><use href="#i-arrow"/></svg></span></div>
                 <h3>Balance<br />hormonal</h3>
                 <p>Recupera tu equilibrio y potencia tu energía.</p>
               </a>
-              <a class="card" href="#cta">
-                <div class="card-img"><div class="card-media ph-card-3" role="img" aria-label="Textura de roca oscura"></div><span class="card-go"><svg class="ico-arrow"><use href="#i-arrow"/></svg></span></div>
+              <a class="card" href="#agenda" aria-haspopup="dialog">
+                <div class="card-img"><div class="card-media ph-card-3" aria-hidden="true"></div><span class="card-go"><svg class="ico-arrow"><use href="#i-arrow"/></svg></span></div>
                 <h3>Salud<br />regenerativa</h3>
                 <p>Activa tu capacidad natural de recuperación y longevidad.</p>
               </a>
@@ -202,7 +211,8 @@
       </section>
 
       <!-- 05 · EQUILIBRIO: a plain dark screen; the sentence lights up and the tower fades in, one stone per beat -->
-      <section class="screen" id="equilibrio" data-label="Equilibrio" data-theme="dark" aria-label="Equilibrio">
+      <section class="screen" id="equilibrio" data-label="Equilibrio" data-theme="dark" aria-labelledby="equilibrio-t">
+        <h2 class="sr-only" id="equilibrio-t">Equilibrio</h2>
         <div class="panel dark">
           <div class="statement wrap">
             <p class="statement-text" data-words>Cuando tu cuerpo funciona en equilibrio, todo cambia: duermes mejor, piensas con claridad y tienes energía para lo que importa.</p>
@@ -283,7 +293,7 @@
               <a class="btn btn-ink" href="#agenda" aria-haspopup="dialog" data-reveal data-magnetic>Agenda tu evaluación <svg class="ico-arrow"><use href="#i-arrow"/></svg></a>
             </div>
           </div>
-          <footer class="footer dark">
+          <footer class="footer dark" role="contentinfo">
             <div class="wrap footer-grid">
               <a class="brand" href="#top" aria-label="Restore Performance, volver al inicio"><img src="/restore-performance/logo.svg" width="120" height="28" alt="" /></a>
               <nav class="footer-links" aria-label="Pie de página">
@@ -306,7 +316,7 @@
     </main>
 
     <!-- booking sheet: every "Agenda tu evaluación" opens it (main.js). No backend yet: submitting shows the thank-you state. -->
-    <dialog class="booking" id="agenda" aria-labelledby="booking-t">
+    <dialog class="booking" id="agenda" aria-labelledby="booking-t" data-lenis-prevent>
       <div class="booking-inner">
         <button type="button" class="booking-close" aria-label="Cerrar"><span></span><span></span></button>
         <div class="booking-side">
